@@ -30,8 +30,7 @@ export default {
 
         submit() {
             this.value = !this.value
-            if (this.value == true) this.value = 1
-            if (this.value == false) this.value = 0
+            this.value == true ? this.value = 1 : this.value = 0
         },
 
         setValue (value) {

@@ -15,54 +15,6 @@ class IndexToggle extends Field
 
 
     /**
-     * Allow inline select to auto-update field value on change on detail view.
-     */
-    public function enableOneStepOnDetail()
-    {
-        return $this->withMeta(['detailTwoStepDisabled' => true]);
-    }
-
-    /**
-     * Allow inline select to auto-update field value on change on detail view.
-     */
-    public function disableTwoStepOnDetail()
-    {
-        return $this->enableOneStepOnDetail();
-    }
-
-    /**
-     * Allow inline select to auto-update field value on change on index view.
-     */
-    public function enableOneStepOnIndex()
-    {
-        return $this->withMeta(['indexTwoStepDisabled' => true]);
-    }
-
-    /**
-     * Allow inline select to auto-update field value on change on index view.
-     */
-    public function disableTwoStepOnIndex()
-    {
-        return $this->enableOneStepOnIndex();
-    }
-
-    /**
-     * Allow inline select to auto-update field value on change on index view.
-     */
-    public function enableOneStepOnLens()
-    {
-        return $this->enableOneStepOnIndex();
-    }
-
-    /**
-     * Allow inline select to auto-update field value on change on index view.
-     */
-    public function disableTwoStepOnLens()
-    {
-        return $this->enableOneStepOnIndex();
-    }
-
-    /**
      * Enable inline editing on detail view.
      */
     public function inlineOnDetail()
@@ -78,11 +30,9 @@ class IndexToggle extends Field
         return $this->withMeta(['inlineIndex' => true]);
     }
 
-    /**
-     * Enable inline editing on index view.
-     */
-    public function inlineOnLens()
+    public function flash($value)
     {
-        return $this->inlineOnIndex();
+        return $this->withMeta(['flash' => $value]);
     }
+
 }

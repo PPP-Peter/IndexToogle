@@ -51,8 +51,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     submit: function submit() {
       this.value = !this.value;
-      if (this.value == true) this.value = 1;
-      if (this.value == false) this.value = 0;
+      this.value == true ? this.value = 1 : this.value = 0;
     },
     setValue: function setValue(value) {
       this.value = value;
@@ -121,18 +120,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               formData = new FormData();
               _this.value = !_this.value;
-              if (_this.value == true) _this.value = 1;
-              if (_this.value == false) _this.value = 0;
+              _this.value == true ? _this.value = 1 : _this.value = 0;
               formData.append(_this.field.attribute, _this.value);
               formData.append('_method', 'PUT');
               return _context.abrupt("return", Nova.request().post("/nova-api/".concat(_this.resourceName, "/").concat(_this.resourceId), formData).then(function () {
-                Nova.success("".concat(_this.field.name, " updated to ").concat(_this.value, " "));
+                if (_this.field.flash !== 'false') {
+                  Nova.success("".concat(_this.field.name, " ").concat(_this.field.flash, " ")); //${this.value}
+                }
               }, function (response) {
                 Nova.error(response);
               })["finally"](function () {
                 console.log('zmenene');
               }));
-            case 7:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -309,7 +309,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               formData.append(_this.field.attribute, _this.value);
               formData.append('_method', 'PUT');
               return _context.abrupt("return", Nova.request().post("/nova-api/".concat(_this.resourceName, "/").concat(_this.resourceId), formData).then(function () {
-                Nova.success("".concat(_this.field.name, " updated to "));
+                Nova.success("".concat(_this.field.name, " ").concat(_this.field.flash, " ")); //${this.value}
               }, function (response) {
                 Nova.error(response);
                 console.log(formData);
